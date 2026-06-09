@@ -11,7 +11,7 @@ jobs:
         uses: action/checkout@v6
 
       - name: Build the docker image
-        runs: |
+        run: |
           sudo docker build -t {{ secrets.DOCKERHUB_USERNAME }}/simple-app-basic .
 
       - name: Log in to docker hub
@@ -22,7 +22,7 @@ jobs:
 
     
       - name: Export the docker image 
-        runs: |
+        run: |
           sudo docker push ${{ secrets.DOCKERHUB_USERNAME }}/simple-app-basic
 
       
