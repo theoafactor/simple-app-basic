@@ -18,6 +18,12 @@ jobs:
 
       - name: Push
         run: sudo docker push ${{ secrets.DOCKERHUB_USERNAME }}/simple-app-basic
+
+      - name: Run
+        run: |
+          sudo docker stop simple-app-basic || true
+          sudo docker rm simple-app-basic || true
+          sudo docker run -d -p 80:80 --name simple-app-basic ${{ secrets.DOCKERHUB_USERNAME }}/simple-app-basic:latest
           
 
 
